@@ -1,0 +1,166 @@
+{
+    "0": {
+        "label": "Baked Potato",
+        "description": "Main Ingredients: Potatoes, olive oil. A nutritious source of vitamins and fiber, promoting digestive health."
+    },
+    "1": {
+        "label": "Crispy Chicken",
+        "description": "Main Ingredients: Chicken, flour, breadcrumbs. Protein-rich, though high in fat. Opt for baked versions for a healthier option."
+    },
+    "2": {
+        "label": "Donut",
+        "description": "Main Ingredients: Flour, sugar, eggs. Provides quick energy but high in sugar and fat; enjoy in moderation."
+    },
+    "3": {
+        "label": "Fries",
+        "description": "Main Ingredients: Potatoes, oil. Offers potassium and vitamin C; baking or air-frying makes it healthier."
+    },
+    "4": {
+        "label": "Hot Dog",
+        "description": "Main Ingredients: Sausages, buns. Convenient protein source; can be high in sodium and preservatives."
+    },
+    "5": {
+        "label": "Sandwich",
+        "description": "Main Ingredients: Bread, various fillings. Balanced meal with proteins and vegetables; opt for whole-grain and lean proteins."
+    },
+    "6": {
+        "label": "Taco",
+        "description": "Main Ingredients: Tortillas, meats, beans. Nutritious with proteins and vegetables; choose lean fillings and whole-grain tortillas."
+    },
+    "7": {
+        "label": "Taquito",
+        "description": "Main Ingredients: Tortillas, fillings. Provides protein and fiber; baking instead of frying is healthier."
+    },
+    "8": {
+        "label": "Apple Pie",
+        "description": "Main Ingredients: Apples, sugar, flour. Offers fiber and antioxidants; high in sugar and fat, so enjoy moderately."
+    },
+    "9": {
+        "label": "Burger",
+        "description": "Main Ingredients: Beef patty, buns. Protein-rich; can be high in fat and calories. Use lean meats and whole-grain buns for better health."
+    },
+    "10": {
+        "label": "Butter Naan",
+        "description": "Main Ingredients: Flour, butter. Provides carbohydrates; high in calories and fat due to butter."
+    },
+    "11": {
+        "label": "Chai",
+        "description": "Main Ingredients: Tea, milk, spices. Antioxidants from tea and anti-inflammatory benefits from spices; enjoy without excessive sugar."
+    },
+    "12": {
+        "label": "Chapati",
+        "description": "Main Ingredients: Whole wheat flour. High in fiber and essential nutrients; supports digestive health."
+    },
+    "13": {
+        "label": "Cheesecake",
+        "description": "Main Ingredients: Cream cheese, sugar. Calcium and protein-rich; high in fat and sugar, so enjoy in moderation."
+    },
+    "14": {
+        "label": "Chicken Curry",
+        "description": "Main Ingredients: Chicken, spices. Protein-rich with essential vitamins; balanced with vegetables."
+    },
+    "15": {
+        "label": "Chole Bhature",
+        "description": "Main Ingredients: Chickpeas, flour. Protein and fiber from chickpeas; high in calories from fried bhature."
+    },
+    "16": {
+        "label": "Dal Makhani",
+        "description": "Main Ingredients: Lentils, kidney beans. Rich in protein and fiber; enjoy in moderation due to cream."
+    },
+    "17": {
+        "label": "Dhokla",
+        "description": "Main Ingredients: Rice, chickpea flour. Low-fat, high-protein; supports digestive health due to fermentation."
+    },
+    "18": {
+        "label": "Fried Rice",
+        "description": "Main Ingredients: Rice, vegetables, meat. Balanced with proteins and carbs; high in sodium if too much soy sauce is used."
+    },
+    "19": {
+        "label": "Ice Cream",
+        "description": "Main Ingredients: Milk, cream, sugar. Provides calcium and protein; high in sugar and fat, so consume occasionally."
+    },
+    "20": {
+        "label": "Idli",
+        "description": "Main Ingredients: Rice, urad dal. Low-fat, high-protein; beneficial for digestion due to fermentation."
+    },
+    "21": {
+        "label": "Jalebi",
+        "description": "Main Ingredients: Flour, sugar syrup. Sweet treat high in sugar; provides quick energy but should be eaten sparingly."
+    },
+    "22": {
+        "label": "Kaathi Rolls",
+        "description": "Main Ingredients: Paratha, various fillings. Balanced with carbs, proteins, and vegetables; healthier with whole-grain parathas."
+    },
+    "23": {
+        "label": "Kadai Paneer",
+        "description": "Main Ingredients: Paneer, vegetables. Protein and calcium-rich; nutritious with vegetables and spices."
+    },
+    "24": {
+        "label": "Kulfi",
+        "description": "Main Ingredients: Milk, cream. High in calcium and protein; enjoy occasionally due to high sugar and fat content."
+    },
+    "25": {
+        "label": "Masala Dosa",
+        "description": "Main Ingredients: Rice batter, spiced potato filling. Provides protein and carbs; flavorful and balanced when paired with vegetables."
+    },
+    "26": {
+        "label": "Momos",
+        "description": "Main Ingredients: Flour, filling (vegetables or meat). Offers protein and nutrients; opt for steamed over fried for a healthier option."
+    },
+    "27": {
+        "label": "Omelette",
+        "description": "Main Ingredients: Eggs, optional fillings. Rich in protein and nutrients; adding vegetables enhances nutritional value."
+    },
+    "28": {
+        "label": "Paani Puri",
+        "description": "Main Ingredients: Puri, tamarind water, chickpeas. Mix of carbs and proteins; flavorful but can be high in sodium."
+    },
+    "29": {
+        "label": "Pakode",
+        "description": "Main Ingredients: Vegetables, chickpea flour. Protein and fiber-rich; healthier when baked rather than fried."
+    },
+    "30": {
+        "label": "Pancakes",
+        "description": "Main Ingredients: Flour, eggs, milk. Provides carbohydrates and protein; can be high in sugar and fat if topped heavily."
+    },
+    "31": {
+        "label": "Quesadilla",
+        "description": "Main Ingredients: Tortillas, cheese, various fillings. Offers protein and carbs; can be high in fat, so use lean fillings for a healthier option."
+    },
+    "32": {
+        "label": "Ratatouille",
+        "description": "Main Ingredients: Tomatoes, eggplant, zucchini, peppers. A vegetable-rich dish that provides vitamins and antioxidants with low calories."
+    },
+    "33": {
+        "label": "Samosa",
+        "description": "Main Ingredients: Flour, potatoes, peas, spices. High in carbs and flavor; baking instead of frying can make it healthier."
+    },
+    "34": {
+        "label": "Spring Rolls",
+        "description": "Main Ingredients: Rice paper, vegetables, or meat. Provides protein and vegetables; healthier when steamed or baked."
+    },
+    "35": {
+        "label": "Stuffed Bell Peppers",
+        "description": "Main Ingredients: Bell peppers, rice, meat, or beans. Offers a balanced meal with proteins, carbs, and vegetables."
+    },
+    "36": {
+        "label": "Tandoori Chicken",
+        "description": "Main Ingredients: Chicken, yogurt, spices. Protein-rich and flavored with spices; healthier when grilled."
+    },
+    "37": {
+        "label": "Uttapam",
+        "description": "Main Ingredients: Rice and lentil batter, toppings like vegetables. High in protein and fiber; a nutritious and filling meal."
+    },
+    "38": {
+        "label": "Veggie Burger",
+        "description": "Main Ingredients: Plant-based patty, buns. Provides protein and fiber; a healthier alternative to traditional burgers."
+    },
+    "39": {
+        "label": "Waffles",
+        "description": "Main Ingredients: Flour, eggs, milk. Offers carbohydrates and protein; can be high in sugar and fat if heavily topped."
+    },
+    "40": {
+        "label": "Zucchini Bread",
+        "description": "Main Ingredients: Zucchini, flour, sugar, eggs. Provides some vitamins and minerals from zucchini; enjoy in moderation due to sugar content."
+    }
+}
