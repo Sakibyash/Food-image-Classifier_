@@ -92,34 +92,43 @@
                 return;
             }
 
-            const formData = new FormData();
-            formData.append('file', fileInput.files[0]);
-
-            // Preview the image
+            const file = fileInput.files[0];
             const imgPreview = document.getElementById('imagePreview');
             imgPreview.innerHTML = '';
             const img = document.createElement('img');
-            img.src = URL.createObjectURL(fileInput.files[0]);
+            img.src = URL.createObjectURL(file);
             imgPreview.appendChild(img);
 
+            // Create a FormData object to upload the image
+            const formData = new FormData();
+            formData.append('file', file);
+
             try {
-                const response = await fetch('https://huggingface.co/spaces/Sakibrumu/Food_Image_Classification/run/predict', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': 'Bearer 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'
-                    },
-                    body: formData
-                });
+                // Convert image to base64 string
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async function() {
+                    const base64Image = reader.result.split(',')[1]; // Remove the data URL prefix
 
-                if (!response.ok) {
-                    throw new Error('Failed to get prediction');
-                }
+                    // Make a GET request with the base64 image as a query parameter
+                    const response = await fetch(`https://sakibrumu-food-image-classification.hf.space/run/predict?image=${encodeURIComponent(base64Image)}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': 'Bearer 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',
+                            'Accept': 'application/json'
+                        }
+                    });
 
-                const result = await response.json();
-                document.getElementById('result').innerText = `Prediction: ${result.label}`;
+                    if (!response.ok) {
+                        throw new Error('Failed to get prediction');
+                    }
 
-                // Display dish details
-                displayDishDetails(result.label);
+                    const result = await response.json();
+                    document.getElementById('result').innerText = `Prediction: ${result.label}`;
+
+                    // Display dish details
+                    displayDishDetails(result.label);
+                };
             } catch (error) {
                 document.getElementById('result').innerText = `Error: ${error.message}`;
             }
