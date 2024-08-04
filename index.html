@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Image Classifier</title>
+    <style>
+        body {
+            background-color: black;
+            color: pink;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            border: 2px solid pink;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #222;
+        }
+
+        .left-side {
+            margin-right: 20px;
+        }
+
+        button {
+            background-color: pink;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff99cc;
+        }
+
+        #imagePreview, #result {
+            margin-top: 20px;
+        }
+
+        .box {
+            border: 1px solid pink;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #333;
+        }
+
+        #dish-details-box {
+            margin-top: 20px;
+            border: 1px solid pink;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: pink;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <h1>Food Image Classifier</h1>
+            <input type="file" id="fileInput" accept="image/*">
+            <button onclick="uploadImage()">Upload and Predict</button>
+            <div id="imagePreview"></div>
+        </div>
+        <div id="result" class="box"></div>
+    </div>
+    <div id="dish-details-box" class="box"></div>
+
+    <script>
+        async function uploadImage() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert('Please select an image');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+
+            // Preview the image
+            const imgPreview = document.getElementById('imagePreview');
+            imgPreview.innerHTML = '';
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(fileInput.files[0]);
+            imgPreview.appendChild(img);
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to get prediction');
+                }
+
+                const result = await response.json();
+                document.getElementById('result').innerText = `Prediction: ${result.label}`;
+
+                // Display dish details
+                displayDishDetails(result.label);
+            } catch (error) {
+                document.getElementById('result').innerText = `Error: ${error.message}`;
+            }
+        }
+
+        function displayDishDetails(dishLabel) {
+            fetch('dish_details.json')
+                .then(response => response.json())
+                .then(data => {
+                    const dishDetailsBox = document.getElementById('dish-details-box');
+                    const dishDetails = Object.values(data).find(item => item.label === dishLabel);
+
+                    if (dishDetails) {
+                        dishDetailsBox.innerHTML = `
+                            <h2>${dishDetails.label}</h2>
+                            <p>${dishDetails.description}</p>
+                        `;
+                    } else {
+                        dishDetailsBox.innerText = 'No details available for this dish.';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('dish-details-box').innerText = `Error loading dish details: ${error.message}`;
+                });
+        }
+    </script>
+</body>
+</html>
