@@ -40,15 +40,24 @@
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
+            margin: 10px;
         }
         button:hover {
             background-color: #ff66b2;
+        }
+        #results img {
+            max-width: 100%;
+            height: auto;
+        }
+        #results p {
+            font-size: 24px;
+            color: pink;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Food Image Classifier</h1>
+        <h1>Food Image Classifier</h1>
         <p>
             Discover the Future of Food Recognition
             <br><br>
@@ -126,9 +135,43 @@
             <br><br>
             Upload an image now and let our model provide you with accurate predictions and detailed information about your dish. Explore, learn, and enjoy the world of food like never before!
         </p>
-        <a href="https://sakibrumu-food-image-classification.hf.space/?__theme=light" target="_blank">
-            <button>Checky Tasty Foody</button>
-        </a>
+        <input id="photo" type="file">
+        <button onclick="submitImage()">Submit</button>
+        <button onclick="window.open('https://sakibrumu-food-image-classification.hf.space/?__theme=light', '_blank')">CheckY Tasty Foody</button>
+        <div id="results"></div>
     </div>
+
+    <script>
+        async function submitImage() {
+            const fileInput = document.getElementById('photo');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please upload an image.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = async function() {
+                const imageData = reader.result;
+                
+                const response = await fetch("https://sakibrumu-food-image-classification.hf.space/run/predict", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ data: [imageData] })
+                });
+                
+                const json = await response.json();
+                const label = json.data[0].label; // Adjust based on actual API response structure
+
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = `
+                    <img src="${imageData}" width="500">
+                    <p>${label}</p>
+                `;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
 </body>
 </html>
