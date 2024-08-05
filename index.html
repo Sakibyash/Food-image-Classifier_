@@ -9,127 +9,126 @@
             background-color: black;
             color: pink;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: auto; /* Allow scrolling */
-            height: 100vh; /* Full viewport height */
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            display: flex;
-            border: 2px solid pink;
+            text-align: center;
             padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid pink;
             border-radius: 10px;
             background-color: #222;
-            width: 100%;
-            max-width: 1200px;
-            flex: 1;
-            overflow: hidden; /* Hide overflow */
-            margin: 20px;
         }
-
-        .iframe-container {
-            flex-grow: 1;
-            overflow: auto; /* Allow scrolling if content overflows */
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        #dish-details-box {
-            margin-top: 20px;
-            border: 1px solid pink;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #333;
-            overflow-y: auto; /* Allows vertical scrolling if content overflows */
-            max-height: 200px; /* Limits the height */
-        }
-
         h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 36px;
             color: pink;
         }
-
-        .submit-button-container {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px;
-            background-color: black;
-            border-top: 2px solid pink;
-            margin: 20px;
+        p {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 20px;
         }
-
-        #submit-button {
+        button {
             background-color: pink;
             color: black;
             border: none;
-            padding: 10px 20px;
+            padding: 15px 30px;
+            font-size: 18px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
         }
-
-        #submit-button:hover {
-            background-color: #ff66b2; /* Lighter pink for hover effect */
+        button:hover {
+            background-color: #ff66b2;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="iframe-container">
-            <iframe src="https://sakibrumu-food-image-classification.hf.space/?__theme=light"
-                    aria-label="Space app"
-                    allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; clipboard-read; clipboard-write; display-capture; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr; wake-lock; xr-spatial-tracking"
-                    sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-storage-access-by-user-activation"
-                    scrolling="no">
-            </iframe>
-        </div>
+        <h1>Welcome to the Food Image Classifier</h1>
+        <p>
+            Discover the Future of Food Recognition
+            <br><br>
+            Welcome to the ultimate food image classification experience! Our advanced deep learning model is designed to identify a diverse range of dishes with high accuracy. Simply upload an image of your favorite food, and let our state-of-the-art technology do the rest.
+            <br><br>
+            Our sophisticated model leverages cutting-edge deep learning techniques to classify various types of dishes, providing precise predictions every time. From traditional favorites to exotic delicacies, our system can identify and categorize a wide variety of foods, including:
+            <br><br>
+            <strong>1. Baked Potato:</strong> A nutritious source of vitamins and fiber, promoting digestive health.
+            <br>
+            <strong>2. Crispy Chicken:</strong> Protein-rich, though high in fat; opt for baked versions for a healthier option.
+            <br>
+            <strong>3. Donut:</strong> Provides quick energy but is high in sugar and fat; enjoy in moderation.
+            <br>
+            <strong>4. Fries:</strong> Offers potassium and vitamin C; baking or air-frying makes it healthier.
+            <br>
+            <strong>5. Hot Dog:</strong> Convenient protein source; can be high in sodium and preservatives.
+            <br>
+            <strong>6. Sandwich:</strong> Balanced meal with proteins and vegetables; opt for whole-grain and lean proteins.
+            <br>
+            <strong>7. Taco:</strong> Nutritious with proteins and vegetables; choose lean fillings and whole-grain tortillas.
+            <br>
+            <strong>8. Taquito:</strong> Provides protein and fiber; baking instead of frying is healthier.
+            <br>
+            <strong>9. Apple Pie:</strong> Offers fiber and antioxidants; high in sugar and fat, so enjoy moderately.
+            <br>
+            <strong>10. Burger:</strong> Protein-rich; can be high in fat and calories. Use lean meats and whole-grain buns for better health.
+            <br>
+            <strong>11. Butter Naan:</strong> Provides carbohydrates; high in calories and fat due to butter.
+            <br>
+            <strong>12. Chai:</strong> Antioxidants from tea and anti-inflammatory benefits from spices; enjoy without excessive sugar.
+            <br>
+            <strong>13. Chapati:</strong> High in fiber and essential nutrients; supports digestive health.
+            <br>
+            <strong>14. Cheesecake:</strong> Calcium and protein-rich; high in fat and sugar, so enjoy in moderation.
+            <br>
+            <strong>15. Chicken Curry:</strong> Protein-rich with essential vitamins; balanced with vegetables.
+            <br>
+            <strong>16. Chole Bhature:</strong> Protein and fiber from chickpeas; high in calories from fried bhature.
+            <br>
+            <strong>17. Dal Makhani:</strong> Rich in protein and fiber; enjoy in moderation due to cream.
+            <br>
+            <strong>18. Dhokla:</strong> Low-fat, high-protein; supports digestive health due to fermentation.
+            <br>
+            <strong>19. Fried Rice:</strong> Balanced with proteins and carbs; high in sodium if too much soy sauce is used.
+            <br>
+            <strong>20. Ice Cream:</strong> Provides calcium and protein; high in sugar and fat, so consume occasionally.
+            <br>
+            <strong>21. Idli:</strong> Low-fat, high-protein; beneficial for digestion due to fermentation.
+            <br>
+            <strong>22. Jalebi:</strong> Sweet treat high in sugar; provides quick energy but should be eaten sparingly.
+            <br>
+            <strong>23. Kaathi Rolls:</strong> Balanced with carbs, proteins, and vegetables; healthier with whole-grain parathas.
+            <br>
+            <strong>24. Kadai Paneer:</strong> Protein and calcium-rich; nutritious with vegetables and spices.
+            <br>
+            <strong>25. Kulfi:</strong> High in calcium and protein; enjoy occasionally due to high sugar and fat content.
+            <br>
+            <strong>26. Masala Dosa:</strong> Provides protein and carbs; flavorful and balanced when paired with vegetables.
+            <br>
+            <strong>27. Momos:</strong> Offers protein and nutrients; opt for steamed over fried for a healthier option.
+            <br>
+            <strong>28. Omelette:</strong> Rich in protein and nutrients; adding vegetables enhances nutritional value.
+            <br>
+            <strong>29. Paani Puri:</strong> Mix of carbs and proteins; flavorful but can be high in sodium.
+            <br>
+            <strong>30. Pakode:</strong> Protein and fiber-rich; healthier when baked rather than fried.
+            <br>
+            <strong>31. Pancakes:</strong> Provides carbohydrates and protein; can be high in sugar and fat if topped heavily.
+            <br>
+            <strong>32. Quesadilla:</strong> Offers protein and carbs; can be high in fat, so use lean fillings for a healthier option.
+            <br>
+            <strong>33. Ratatouille:</strong> A vegetable-rich dish that provides vitamins and antioxidants with low calories.
+            <br>
+            <strong>34. Samosa:</strong> High in carbs and flavor; baking instead of frying can make it healthier.
+            <br><br>
+            Upload an image now and let our model provide you with accurate predictions and detailed information about your dish. Explore, learn, and enjoy the world of food like never before!
+        </p>
+        <a href="https://sakibrumu-food-image-classification.hf.space/?__theme=light" target="_blank">
+            <button>Checky Tasty Food</button>
+        </a>
     </div>
-
-    <div id="dish-details-box" class="box"></div>
-
-    <div class="submit-button-container">
-        <button id="submit-button">Submit</button>
-    </div>
-
-    <script>
-        // Function to display dish details
-        function displayDishDetails(dishLabel) {
-            fetch('dish_details.json')
-                .then(response => response.json())
-                .then(data => {
-                    const dishDetailsBox = document.getElementById('dish-details-box');
-                    const dishDetails = Object.values(data).find(item => item.label === dishLabel);
-
-                    if (dishDetails) {
-                        dishDetailsBox.innerHTML = `
-                            <h2>${dishDetails.label}</h2>
-                            <p>${dishDetails.description}</p>
-                        `;
-                    } else {
-                        dishDetailsBox.innerText = 'No details available for this dish.';
-                    }
-                })
-                .catch(error => {
-                    document.getElementById('dish-details-box').innerText = `Error loading dish details: ${error.message}`;
-                });
-        }
-
-        // Example function to handle prediction results (you should adapt this to match your actual flow)
-        function handlePredictionResult(prediction) {
-            const dishLabel = prediction.label;  // Assume prediction contains a label
-            displayDishDetails(dishLabel);
-        }
-    </script>
 </body>
 </html>
