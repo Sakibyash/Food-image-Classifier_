@@ -99,31 +99,31 @@
             img.src = URL.createObjectURL(file);
             imgPreview.appendChild(img);
 
-            const formData = new FormData();
-            formData.append('file', file);
+            const reader = new FileReader();
+            reader.onloadend = async function() {
+                try {
+                    const response = await fetch('https://sakibrumu-food-image-classification.hf.space/queue/data', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ data: [reader.result] })
+                    });
 
-            try {
-                // POST request to the Hugging Face Space API
-                const response = await fetch('https://sakibrumu-food-image-classification.hf.space/run/predict', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Authorization': 'Bearer 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'
+                    if (!response.ok) {
+                        throw new Error('Failed to get prediction');
                     }
-                });
 
-                if (!response.ok) {
-                    throw new Error('Failed to get prediction');
+                    const result = await response.json();
+                    document.getElementById('result').innerText = `Prediction: ${result.data[0].label}`;
+
+                    // Display dish details
+                    displayDishDetails(result.data[0].label);
+                } catch (error) {
+                    document.getElementById('result').innerText = `Error: ${error.message}`;
                 }
-
-                const result = await response.json();
-                document.getElementById('result').innerText = `Prediction: ${result.label}`;
-
-                // Display dish details
-                displayDishDetails(result.label);
-            } catch (error) {
-                document.getElementById('result').innerText = `Error: ${error.message}`;
-            }
+            };
+            reader.readAsDataURL(file);
         }
 
         function displayDishDetails(dishLabel) {
