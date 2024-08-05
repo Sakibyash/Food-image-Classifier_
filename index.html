@@ -93,21 +93,19 @@
             }
 
             const file = fileInput.files[0];
-            const imgPreview = document.getElementById('imagePreview');
-            imgPreview.innerHTML = '';
-            const img = document.createElement('img');
-            img.src = URL.createObjectURL(file);
-            imgPreview.appendChild(img);
-
             const reader = new FileReader();
+
             reader.onloadend = async function() {
+                const base64Image = reader.result.split(',')[1]; // Remove data URL prefix
+
                 try {
-                    const response = await fetch('https://sakibrumu-food-image-classification.hf.space', {
+                    const response = await fetch('https://sakibrumu-food-image-classification.hf.space/run/predict', {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer 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'
                         },
-                        body: JSON.stringify({ data: [reader.result] })
+                        body: JSON.stringify({ data: [base64Image] })
                     });
 
                     if (!response.ok) {
@@ -123,6 +121,7 @@
                     document.getElementById('result').innerText = `Error: ${error.message}`;
                 }
             };
+
             reader.readAsDataURL(file);
         }
 
