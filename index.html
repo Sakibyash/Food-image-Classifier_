@@ -22,101 +22,36 @@
             padding: 20px;
             border-radius: 10px;
             background-color: #222;
+            width: 100%;
+            max-width: 1200px;
+            height: 90vh;
         }
 
-        .left-side {
-            margin-right: 20px;
+        .iframe-container {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
-        button {
-            background-color: pink;
-            color: black;
+        iframe {
+            width: 100%;
+            height: 100%;
             border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #ff99cc;
-        }
-
-        #imagePreview, #result {
-            margin-top: 20px;
-        }
-
-        .box {
-            border: 1px solid pink;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #333;
-        }
-
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: pink;
-        }
-
-        img {
-            max-width: 100%;
-            max-height: 300px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="left-side">
-            <h1>Food Image Classifier</h1>
-            <input id="fileInput" type="file" accept="image/*">
-            <button onclick="uploadImage()">Upload and Predict</button>
-            <div id="imagePreview"></div>
-            <div id="result" class="box"></div>
+        <div class="iframe-container">
+            <iframe src="https://sakibrumu-food-image-classification.hf.space/?__theme=light"
+                    aria-label="Space app"
+                    allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; clipboard-read; clipboard-write; display-capture; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr; wake-lock; xr-spatial-tracking"
+                    sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-storage-access-by-user-activation"
+                    scrolling="no">
+            </iframe>
         </div>
     </div>
-
-    <script>
-        async function uploadImage() {
-            const fileInput = document.getElementById('fileInput');
-            if (fileInput.files.length === 0) {
-                alert('Please select an image');
-                return;
-            }
-
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-
-            reader.onloadend = async function() {
-                const base64Image = reader.result.split(',')[1]; // Extract base64 string
-
-                try {
-                    const response = await fetch('https://sakibrumu-food-image-classification.hf.space/run/predict', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ data: [base64Image] })
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-
-                    const result = await response.json();
-                    const label = result.data[0]?.label || 'Unknown'; // Adjust based on actual API response structure
-
-                    document.getElementById('result').innerHTML = `
-                        <br/><img src="${reader.result}" width="500">
-                        <p>Prediction: ${label}</p>
-                    `;
-                } catch (error) {
-                    console.error('Error:', error); // Log error to console for debugging
-                    document.getElementById('result').innerText = `Error: ${error.message}`;
-                }
-            };
-
-            reader.readAsDataURL(file);
-        }
-    </script>
 </body>
 </html>
