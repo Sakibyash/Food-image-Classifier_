@@ -1,0 +1,25 @@
+title: Food Image Classifier
+description: A web app to classify food images using a Hugging Face model.
+theme: minima
+markdown: kramdown
+
+# Exclude these files and directories from the Jekyll build process
+exclude:
+  - README.md
+  - LICENSE
+  - /_site/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - .github/
+  - .vscode/
+  - .git/
+
+# Custom configurations
+permalink: pretty
+paginate: 5
+
+# Plugins (optional)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
