@@ -104,7 +104,9 @@
                     }
 
                     const result = await response.json();
-                    document.getElementById('result').innerText = `Prediction: ${result.data[0].label}`;
+                    const label = result.data[0].label; // Assuming label is in this format
+
+                    document.getElementById('result').innerText = `Prediction: ${label}`;
                 } catch (error) {
                     document.getElementById('result').innerText = `Error: ${error.message}`;
                 }
