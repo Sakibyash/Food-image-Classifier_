@@ -40,6 +40,20 @@
             height: 100%;
             border: none;
         }
+
+        #dish-details-box {
+            margin-top: 20px;
+            border: 1px solid pink;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: pink;
+        }
     </style>
 </head>
 <body>
@@ -53,5 +67,37 @@
             </iframe>
         </div>
     </div>
+
+    <div id="dish-details-box" class="box"></div>
+
+    <script>
+        // Function to display dish details
+        function displayDishDetails(dishLabel) {
+            fetch('dish_details.json')
+                .then(response => response.json())
+                .then(data => {
+                    const dishDetailsBox = document.getElementById('dish-details-box');
+                    const dishDetails = Object.values(data).find(item => item.label === dishLabel);
+
+                    if (dishDetails) {
+                        dishDetailsBox.innerHTML = `
+                            <h2>${dishDetails.label}</h2>
+                            <p>${dishDetails.description}</p>
+                        `;
+                    } else {
+                        dishDetailsBox.innerText = 'No details available for this dish.';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('dish-details-box').innerText = `Error loading dish details: ${error.message}`;
+                });
+        }
+
+        // Example function to handle prediction results (you should adapt this to match your actual flow)
+        function handlePredictionResult(prediction) {
+            const dishLabel = prediction.label;  // Assume prediction contains a label
+            displayDishDetails(dishLabel);
+        }
+    </script>
 </body>
 </html>
