@@ -68,50 +68,55 @@
     <div class="container">
         <div class="left-side">
             <h1>Food Image Classifier</h1>
-            <input type="file" id="fileInput" accept="image/*">
-            <button onclick="read()">Upload and Predict</button>
+            <input id="fileInput" type="file" accept="image/*">
+            <button onclick="uploadImage()">Upload and Predict</button>
             <div id="imagePreview"></div>
-            <div id="results" class="box"></div>
+            <div id="result" class="box"></div>
         </div>
     </div>
 
     <script>
-        async function read() {
-            const photo = document.getElementById('fileInput');
-            if (photo.files.length === 0) {
+        async function uploadImage() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
                 alert('Please select an image');
                 return;
             }
 
+            const file = fileInput.files[0];
             const reader = new FileReader();
-            reader.onloadend = async function () {
+
+            reader.onloadend = async function() {
+                const base64Image = reader.result.split(',')[1]; // Extract base64 string
+
                 try {
-                    const response = await fetch("https://sakibrumu-food-image-classification.hf.space/run/predict", {
-                        method: "POST",
+                    const response = await fetch('https://sakibrumu-food-image-classification.hf.space/run/predict', {
+                        method: 'POST',
                         headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": "Bearer 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"
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer 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'
                         },
-                        body: JSON.stringify({ data: [reader.result.split(',')[1]] }) // Assuming `reader.result` is in data URL format
+                        body: JSON.stringify({ data: [base64Image] })
                     });
 
                     if (!response.ok) {
-                        throw new Error('Failed to get prediction');
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
 
-                    const json = await response.json();
-                    const label = json['data'][0]['label'];
+                    const result = await response.json();
+                    const label = result.data[0]?.label || 'Unknown'; // Adjust based on actual API response structure
 
-                    document.getElementById('results').innerHTML = `
+                    document.getElementById('result').innerHTML = `
                         <br/><img src="${reader.result}" width="500">
                         <p>Prediction: ${label}</p>
                     `;
                 } catch (error) {
-                    document.getElementById('results').innerText = `Error: ${error.message}`;
+                    console.error('Error:', error); // Log error to console for debugging
+                    document.getElementById('result').innerText = `Error: ${error.message}`;
                 }
             };
 
-            reader.readAsDataURL(photo.files[0]);
+            reader.readAsDataURL(file);
         }
     </script>
 </body>
