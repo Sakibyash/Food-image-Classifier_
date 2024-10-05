@@ -141,37 +141,27 @@
         <div id="results"></div>
     </div>
 
-    <script>
-        async function submitImage() {
-            const fileInput = document.getElementById('photo');
-            const file = fileInput.files[0];
-            
-            if (!file) {
-                alert('Please upload an image.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = async function() {
-                const imageData = reader.result;
-                
-                const response = await fetch("https://sakibrumu-food-image-classification.hf.space/run/predict", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ data: [imageData] })
-                });
-                
-                const json = await response.json();
-                const label = json.data[0].label; // Adjust based on actual API response structure
-
-                const resultsDiv = document.getElementById('results');
-                resultsDiv.innerHTML = `
-                    <img src="${imageData}" width="500">
-                    <p>${label}</p>
-                `;
-            };
-            reader.readAsDataURL(file);
+    <script type="module">
+        import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
+        
+        async function loaded(reader) {  
+            const app = await client("https://sakibrumu-food-image-classification.hf.space/");
+            const response = await app.predict("/predict", [reader.result]);
+            const label = response['data'][0]['label'];
+            document.getElementById("results").innerHTML = `
+                <br/> 
+                <img src="${reader.result}" width="500"> 
+                <p><strong>Prediction:</strong> ${label}</p>
+            `;
         }
+
+        function read() {
+            const reader = new FileReader();
+            reader.addEventListener('load', () => loaded(reader));
+            reader.readAsDataURL(document.getElementById("photo").files[0]);
+        }
+
+        document.getElementById("photo").addEventListener('input', read);
     </script>
 </body>
 </html>
