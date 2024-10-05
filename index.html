@@ -132,12 +132,9 @@
             <strong>33. Ratatouille:</strong> A vegetable-rich dish that provides vitamins and antioxidants with low calories.
             <br>
             <strong>34. Samosa:</strong> High in carbs and flavor; baking instead of frying can make it healthier.
-            <br><br>
-            Upload an image now and let our model provide you with accurate predictions and detailed information about your dish. Explore, learn, and enjoy the world of food like never before!
         </p>
         <input id="photo" type="file">
         <button onclick="submitImage()">Submit</button>
-        <button onclick="window.open('https://sakibrumu-food-image-classification.hf.space/?__theme=light', '_blank')">CheckY Tasty Foody</button>
         <div id="results"></div>
     </div>
 
@@ -161,7 +158,10 @@
             reader.readAsDataURL(document.getElementById("photo").files[0]);
         }
 
-        document.getElementById("photo").addEventListener('input', read);
+        function submitImage() {
+            read();
+        }
+
     </script>
 </body>
 </html>
