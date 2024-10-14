@@ -141,7 +141,7 @@
     import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
     
     async function loaded(reader) {  
-        const app = await client("https://sakibrumu-food-image-classifier.hf.space/--replicas/1llos/");
+        const app = await client("https://sakibrumu-food-image-classifier-final.hf.space/--replicas/sqfi9/");
         const response = await app.predict("/predict", [reader.result]);
         const label = response['data'][0]['label'];
         results.innerHTML = `<br/> <img src = "${reader.result}" width="500"> <p>${label}</p>`;
