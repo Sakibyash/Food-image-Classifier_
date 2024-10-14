@@ -133,13 +133,18 @@
             <br>
             <strong>34. Samosa:</strong> High in carbs and flavor; baking instead of frying can make it healthier.
         </p>
-       <input id="photo" type="file">
+     ---
+title: Food Image Classifier
+layout: page
+---
+
+<input id="photo" type="file">
 <div id="results"></div>
 <script type = "module">
     import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
     
     async function loaded(reader) {  
-        const app = await client("https://sakibrumu-food-image-classification5.hf.space/api/predict");
+        const app = await client("https://sakibrumu-food-image-classifier.hf.space/--replicas/1llos/");
         const response = await app.predict("/predict", [reader.result]);
         const label = response['data'][0]['label'];
         results.innerHTML = `<br/> <img src = "${reader.result}" width="500"> <p>${label}</p>`;
