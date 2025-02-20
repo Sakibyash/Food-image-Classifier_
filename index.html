@@ -6,8 +6,8 @@
     <title>Food Image Classifier</title>
     <style>
         body {
-            background-color: black;
-            color: pink;
+            background-color: #0a0f24;
+            color: #00ff99;
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
@@ -15,142 +15,105 @@
         }
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: auto;
             padding: 20px;
-            border: 2px solid pink;
+            border: 2px solid #00ff99;
             border-radius: 10px;
-            background-color: #222;
+            background-color: #111;
         }
         h1 {
             font-size: 36px;
-            color: pink;
+            color: #00ff99;
         }
-        p {
-            font-size: 18px;
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-        button {
-            background-color: pink;
-            color: black;
+        input {
+            background-color: #00ff99;
+            color: #0a0f24;
             border: none;
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 10px;
+            font-size: 16px;
             border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin: 10px;
-        }
-        button:hover {
-            background-color: #ff66b2;
         }
         #results img {
             max-width: 100%;
             height: auto;
+            margin-top: 10px;
+            border: 2px solid #00ff99;
+            border-radius: 10px;
         }
-        #results p {
-            font-size: 24px;
-            color: pink;
+        #dish-info, #nutrition-info {
+            font-size: 18px;
+            color: #00ccff;
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Food Image Classifier</h1>
-        <p>
-            Discover the Future of Food Recognition
-            <br><br>
-            Welcome to the ultimate food image classification experience! Our advanced deep learning model is designed to identify a diverse range of dishes with high accuracy. Simply upload an image of your favorite food, and let our state-of-the-art technology do the rest.
-            <br><br>
-            Our sophisticated model leverages cutting-edge deep learning techniques to classify various types of dishes, providing precise predictions every time. From traditional favorites to exotic delicacies, our system can identify and categorize a wide variety of foods, including:
-            <br><br>
-            <strong>1. Baked Potato:</strong> A nutritious source of vitamins and fiber, promoting digestive health.
-            <br>
-            <strong>2. Crispy Chicken:</strong> Protein-rich, though high in fat; opt for baked versions for a healthier option.
-            <br>
-            <strong>3. Donut:</strong> Provides quick energy but is high in sugar and fat; enjoy in moderation.
-            <br>
-            <strong>4. Fries:</strong> Offers potassium and vitamin C; baking or air-frying makes it healthier.
-            <br>
-            <strong>5. Hot Dog:</strong> Convenient protein source; can be high in sodium and preservatives.
-            <br>
-            <strong>6. Sandwich:</strong> Balanced meal with proteins and vegetables; opt for whole-grain and lean proteins.
-            <br>
-            <strong>7. Taco:</strong> Nutritious with proteins and vegetables; choose lean fillings and whole-grain tortillas.
-            <br>
-            <strong>8. Taquito:</strong> Provides protein and fiber; baking instead of frying is healthier.
-            <br>
-            <strong>9. Apple Pie:</strong> Offers fiber and antioxidants; high in sugar and fat, so enjoy moderately.
-            <br>
-            <strong>10. Burger:</strong> Protein-rich; can be high in fat and calories. Use lean meats and whole-grain buns for better health.
-            <br>
-            <strong>11. Butter Naan:</strong> Provides carbohydrates; high in calories and fat due to butter.
-            <br>
-            <strong>12. Chai:</strong> Antioxidants from tea and anti-inflammatory benefits from spices; enjoy without excessive sugar.
-            <br>
-            <strong>13. Chapati:</strong> High in fiber and essential nutrients; supports digestive health.
-            <br>
-            <strong>14. Cheesecake:</strong> Calcium and protein-rich; high in fat and sugar, so enjoy in moderation.
-            <br>
-            <strong>15. Chicken Curry:</strong> Protein-rich with essential vitamins; balanced with vegetables.
-            <br>
-            <strong>16. Chole Bhature:</strong> Protein and fiber from chickpeas; high in calories from fried bhature.
-            <br>
-            <strong>17. Dal Makhani:</strong> Rich in protein and fiber; enjoy in moderation due to cream.
-            <br>
-            <strong>18. Dhokla:</strong> Low-fat, high-protein; supports digestive health due to fermentation.
-            <br>
-            <strong>19. Fried Rice:</strong> Balanced with proteins and carbs; high in sodium if too much soy sauce is used.
-            <br>
-            <strong>20. Ice Cream:</strong> Provides calcium and protein; high in sugar and fat, so consume occasionally.
-            <br>
-            <strong>21. Idli:</strong> Low-fat, high-protein; beneficial for digestion due to fermentation.
-            <br>
-            <strong>22. Jalebi:</strong> Sweet treat high in sugar; provides quick energy but should be eaten sparingly.
-            <br>
-            <strong>23. Kaathi Rolls:</strong> Balanced with carbs, proteins, and vegetables; healthier with whole-grain parathas.
-            <br>
-            <strong>24. Kadai Paneer:</strong> Protein and calcium-rich; nutritious with vegetables and spices.
-            <br>
-            <strong>25. Kulfi:</strong> High in calcium and protein; enjoy occasionally due to high sugar and fat content.
-            <br>
-            <strong>26. Masala Dosa:</strong> Provides protein and carbs; flavorful and balanced when paired with vegetables.
-            <br>
-            <strong>27. Momos:</strong> Offers protein and nutrients; opt for steamed over fried for a healthier option.
-            <br>
-            <strong>28. Omelette:</strong> Rich in protein and nutrients; adding vegetables enhances nutritional value.
-            <br>
-            <strong>29. Paani Puri:</strong> Mix of carbs and proteins; flavorful but can be high in sodium.
-            <br>
-            <strong>30. Pakode:</strong> Protein and fiber-rich; healthier when baked rather than fried.
-            <br>
-            <strong>31. Pancakes:</strong> Provides carbohydrates and protein; can be high in sugar and fat if topped heavily.
-            <br>
-            <strong>32. Quesadilla:</strong> Offers protein and carbs; can be high in fat, so use lean fillings for a healthier option.
-            <br>
-            <strong>33. Ratatouille:</strong> A vegetable-rich dish that provides vitamins and antioxidants with low calories.
-            <br>
-            <strong>34. Samosa:</strong> High in carbs and flavor; baking instead of frying can make it healthier.
-        </p>
-     ---
+        <input id="photo" type="file">
+        <div id="results"></div>
+        <div id="dish-info"></div>
+        <div id="nutrition-info"></div>
+        <div id="error-message" class="error"></div>
+    </div>
 
-<input id="photo" type="file">
-<div id="results"></div>
-<script type = "module">
-    import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
-    
-    async function loaded(reader) {  
-        const app = await client("https://sakibrumu-food-image-classifier-final.hf.space/--replicas/sqfi9/");
-        const response = await app.predict("/predict", [reader.result]);
-        const label = response['data'][0]['label'];
-        results.innerHTML = `<br/> <img src = "${reader.result}" width="500"> <p>${label}</p>`;
-    }
-    function read() {
-        const reader = new FileReader();
-        reader.addEventListener('load', () => loaded(reader))
-        reader.readAsDataURL(photo.files[0]);
-    }
-    photo.addEventListener('input', read);
+    <script type="module">
+        import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
+        
+        async function loaded(reader) {  
+            try {
+                const app = await client("https://sakibrumu-food-image-classifier-final.hf.space/--replicas/sqfi9/");
+                const response = await app.predict("/predict", [reader.result]);
+                const label = response['data'][0]['label'];
+                results.innerHTML = `<br/> <img src="${reader.result}" width="500"> <p>${label}</p>`;
+                fetchDishDetails(label);
+                fetchNutritionDetails(label);
+            } catch (error) {
+                document.getElementById("error-message").innerText = "Error: Could not classify image. Please try again.";
+            }
+        }
+        
+        function read() {
+            const reader = new FileReader();
+            reader.addEventListener('load', () => loaded(reader));
+            reader.readAsDataURL(photo.files[0]);
+        }
+        
+        photo.addEventListener('input', read);
+        
+        async function fetchDishDetails(dishName) {
+            try {
+                const response = await fetch("dish_details.json");
+                const data = await response.json();
+                let found = Object.values(data).find(item => item.label === dishName);
+                if (found) {
+                    document.getElementById("dish-info").innerHTML = `<strong>${found.label}</strong><br>${found.description}`;
+                } else {
+                    document.getElementById("dish-info").innerText = "No details available for this dish.";
+                }
+            } catch (error) {
+                document.getElementById("dish-info").innerText = "Error fetching dish details.";
+            }
+        }
 
-</script>
+        async function fetchNutritionDetails(dishName) {
+            try {
+                const response = await fetch("food_data.json");
+                const data = await response.json();
+                if (data[dishName]) {
+                    const info = data[dishName];
+                    document.getElementById("nutrition-info").innerHTML = `<strong>Nutrition Info:</strong><br>Calories: ${info.calories}<br>Ingredients: ${info.ingredients.join(", ")}`;
+                } else {
+                    document.getElementById("nutrition-info").innerText = "No nutrition details available for this dish.";
+                }
+            } catch (error) {
+                document.getElementById("nutrition-info").innerText = "Error fetching nutrition details.";
+            }
+        }
+    </script>
+</body>
+</html>
