@@ -88,6 +88,9 @@
         async function fetchDishDetails(dishName) {
             try {
                 const response = await fetch("dish_details.json");
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
                 const data = await response.json();
                 let found = Object.values(data).find(item => item.label === dishName);
                 if (found) {
@@ -103,15 +106,25 @@
         async function fetchNutritionDetails(dishName) {
             try {
                 const response = await fetch("food_data.json");
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
                 const data = await response.json();
                 if (data[dishName]) {
                     const info = data[dishName];
-                    document.getElementById("nutrition-info").innerHTML = `<strong>Nutrition Info:</strong><br>Calories: ${info.calories}<br>Ingredients: ${info.ingredients.join(", ")}`;
+                    document.getElementById("nutrition-info").innerHTML = `
+                        <strong>Nutrition Info:</strong><br>
+                        🍽 Calories: ${info.calories} kcal<br>
+                        💪 Protein: ${info.protein}<br>
+                        🍞 Carbohydrates: ${info.carbohydrates}<br>
+                        🧈 Fat: ${info.fat}
+                    `;
                 } else {
                     document.getElementById("nutrition-info").innerText = "No nutrition details available for this dish.";
                 }
             } catch (error) {
                 document.getElementById("nutrition-info").innerText = "Error fetching nutrition details.";
+                console.error("Fetch Error:", error);
             }
         }
     </script>
