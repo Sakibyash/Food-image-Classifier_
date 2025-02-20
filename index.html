@@ -6,7 +6,7 @@
     <title>Food Image Classifier</title>
     <style>
         body {
-            background-color: #0a0f24;
+            background-color: #f0f0f0;
             color: #00ff99;
             font-family: Arial, sans-serif;
             text-align: center;
@@ -19,7 +19,7 @@
             padding: 20px;
             border: 2px solid #00ff99;
             border-radius: 10px;
-            background-color: #111;
+            background-color: #fff;
         }
         h1 {
             font-size: 36px;
@@ -40,10 +40,24 @@
             border: 2px solid #00ff99;
             border-radius: 10px;
         }
-        #dish-info, #nutrition-info {
-            font-size: 18px;
-            color: #00ccff;
-            margin-top: 10px;
+        .info-box {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .box {
+            width: 45%;
+            padding: 15px;
+            border: 2px solid #00ccff;
+            border-radius: 10px;
+            background-color: #e0f7fa;
+            text-align: left;
+        }
+        .bar {
+            height: 20px;
+            background-color: #00ccff;
+            margin-top: 5px;
+            border-radius: 5px;
         }
         .error {
             color: red;
@@ -54,10 +68,13 @@
 <body>
     <div class="container">
         <h1>Food Image Classifier</h1>
+        <p>Upload an image of food, and our AI model will classify it and provide nutritional information.</p>
         <input id="photo" type="file">
         <div id="results"></div>
-        <div id="dish-info"></div>
-        <div id="nutrition-info"></div>
+        <div class="info-box">
+            <div id="dish-info" class="box"></div>
+            <div id="nutrition-info" class="box"></div>
+        </div>
         <div id="error-message" class="error"></div>
     </div>
 
@@ -114,10 +131,10 @@
                     const info = data[dishName];
                     document.getElementById("nutrition-info").innerHTML = `
                         <strong>Nutrition Info:</strong><br>
-                        🍽 Calories: ${info.calories} kcal<br>
-                        💪 Protein: ${info.protein}<br>
-                        🍞 Carbohydrates: ${info.carbohydrates}<br>
-                        🧈 Fat: ${info.fat}
+                        🍽 Calories: ${info.calories} kcal <div class='bar' style='width: ${info.calories / 5}%;'></div>
+                        💪 Protein: ${info.protein} <div class='bar' style='width: ${parseInt(info.protein)}%;'></div>
+                        🍞 Carbohydrates: ${info.carbohydrates} <div class='bar' style='width: ${parseInt(info.carbohydrates)}%;'></div>
+                        🧈 Fat: ${info.fat} <div class='bar' style='width: ${parseInt(info.fat)}%;'></div>
                     `;
                 } else {
                     document.getElementById("nutrition-info").innerText = "No nutrition details available for this dish.";
